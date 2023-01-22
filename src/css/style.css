@@ -297,7 +297,7 @@ backdrop-filter: blur(10px);
   }
 .projetos--container{
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   margin: 0 55px;
 }
 .card{
