@@ -131,6 +131,9 @@ backdrop-filter: blur(10px);
   border-radius: 15px;
   margin:30px 20px 0 20px;
 }
+.sobre--container-perfil img{
+  width: 100%;
+}
 .sobre--descricao{
   font-size: 1rem;
   text-align: center;
