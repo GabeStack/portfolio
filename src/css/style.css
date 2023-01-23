@@ -172,7 +172,10 @@ backdrop-filter: blur(10px);
   border-bottom-left-radius:25px;
   border-bottom-right-radius:25px;
   cursor: pointer;
- 
+  transition: .6s;
+}
+.card img:hover{
+  outline: 4px solid rgba(189, 0, 255, .7);
 }
 .container--botao{
   margin-top: 20px;
@@ -189,6 +192,10 @@ backdrop-filter: blur(10px);
   color: var(--color-text-primary);
   text-align: center;
   margin: 0 10px 10px 10px;
+  transition: .6s;
+}
+.card--botao:hover{
+  color: var(--color--text--destaque);
 }
 .footer{
   background-color: rgba(254, 254, 254, 0.1);
@@ -209,6 +216,10 @@ backdrop-filter: blur(10px);
   fill: var(--color-text-primary);
   width: 50px;
   height: 50px;
+  transition: 0.6s;
+}
+.contato a svg:hover{
+fill: var(--color--text--destaque);
 }
 @keyframes solRotation {
 
