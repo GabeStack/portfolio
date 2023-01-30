@@ -233,6 +233,7 @@ fill: var(--color--text--destaque);
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  text-align: center;
   height: 100vh;
 }
 .container-404 > svg {
@@ -240,8 +241,7 @@ fill: var(--color--text--destaque);
 }
 .container-404 > a {
   margin-bottom: 100px;
-  margin-right: 300px;
-  margin-left: 300px;
+
 }
 @media (min-width: 700px ){
   .header--container{
