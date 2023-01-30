@@ -227,6 +227,19 @@ fill: var(--color--text--destaque);
     transform: rotate(360deg);
   }
 }
+
+.container-404{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+.container-404-conteudo{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
 @media (min-width: 700px ){
   .header--container{
     display: flex;
