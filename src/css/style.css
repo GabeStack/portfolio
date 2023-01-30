@@ -227,7 +227,94 @@ fill: var(--color--text--destaque);
     transform: rotate(360deg);
   }
 }
+@media (min-width: 700px ){
+  .header--container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:rgba(37, 37, 37, .6);
+    border-bottom: 1px solid #580079;
+    color: var(--color--text--destaque);
+    width: 100%;
+    backdrop-filter: blur(10px);
+    padding-top: 10px;
+  
+  }
+  .header--navbar-pc{
+    display: flex;
+    gap:30px;
+    font-size: 24px;
+    padding-bottom: 10px;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    margin-top: 5px;
+  }
+  .header--navbar{
+  display: none;
+    
+  }
+  .icon{
+    display: none;
+  }
+  .open{
+    display: none;
+  }
+  .introducao{
+    margin-top: 150px;
+    display: flex;
+    flex-direction: row;
+    align-items:inherit;
+    justify-content: space-around;
+    margin-bottom: 100px;
 
+  }
+  .introducao img{
+    max-width: 50%;
+  }
+  .sobre--container{
+    margin:20px 80px;
+  }
+  .sobre--container-perfil{
+    margin:20px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .sobre--container-perfil img{
+    width:90%;
+  }
+  .sobre--descricao{
+    font-weight: 400;
+    font-size: 20px;
+    padding: 10px 30px;
+  }
+  .tecnologia{
+    padding: 50px auto;
+  }
+  .tecnoligia--card{
+    padding-top: 30px;
+  }
+.projetos--container{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0 55px;
+}
+.card{
+  display: flex;
+  padding: 10px 10px 20px 10px;
+  border-radius: 15px;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(254, 254, 254, 0.1);
+  margin: 40px 20px;
+}
+.card:first-child{
+  margin-top:40px;
+}
+}
+
+}
 @media (min-width: 1200px){
   .header--container{
     display: flex;
