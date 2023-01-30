@@ -235,10 +235,13 @@ fill: var(--color--text--destaque);
   flex-direction: column;
   height: 100vh;
 }
-.container-404-conteudo{
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+.container-404 > svg {
+  max-width: 80%;
+}
+.container-404 > a {
+  margin-bottom: 100px;
+  margin-right: 300px;
+  margin-left: 300px;
 }
 @media (min-width: 700px ){
   .header--container{
