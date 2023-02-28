@@ -11,8 +11,8 @@ function navBar() {
 
 for (const link of links) {
     link.addEventListener('click', function () {
-        menuMobile.classList.remove('open')
+        menuMobile.classList.remove('open');
         document.querySelector('.icon').src = "src/img/bx-menu.svg"
-    })
+    });
 }
 }
