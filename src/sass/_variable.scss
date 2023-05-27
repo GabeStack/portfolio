@@ -1,0 +1,18 @@
+$color-darkCement:  rgba(37, 37, 37, 0.6);
+$font:"Poppins", sans-serif;
+
+@mixin flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@mixin tablet {
+  @media (min-width: 700px){
+  @content;
+  }
+}
+@mixin pc {
+  @media (min-width: 1200px){
+  @content;
+  }
+}
