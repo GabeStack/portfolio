@@ -1,0 +1,26 @@
+@import "variable";
+.footer {
+  background-color: rgba(254, 254, 254, 0.1);
+  padding: 1.875rem 0.625rem 0 0.625rem;
+  margin-top: 6.25rem;
+  border-top-left-radius: 0.938rem;
+  border-top-right-radius: 0.938rem;
+}
+.footer p {
+  margin: 0;
+  padding-bottom: 0.625;
+}
+
+.contato {
+  display: flex;
+  justify-content: space-around;
+}
+.contato a svg {
+  fill: #fefefe;
+  width: 3.125rem;
+  height: 3.125rem;
+  transition: 0.6s;
+}
+.contato a svg:hover {
+  fill: #bd00ff;
+}

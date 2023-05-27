@@ -1,0 +1,36 @@
+@import "variable";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: $font;
+  background: #252525;
+  color: #fefefe;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* css Genericos*/
+.titulo {
+  text-align: center;
+  margin-bottom: 1.875rem;
+  color: rgba(254, 254, 254, 0.4);
+}
+
+.diminuir {
+  font-size: 0.875rem;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
