@@ -1,0 +1,9 @@
+.js .js-scroll{
+    opacity: 0;
+    transition: all 3s;
+    transform: translate3d(0, -15px, 0);
+  }
+  .js .js-scroll.ativo{
+   opacity: 1;
+   transform: translate3d(0, 0, 0);
+  }
