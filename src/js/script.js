@@ -35,24 +35,3 @@ const animate = () => {
 animate();
 
 window.addEventListener('scroll', animate);
-
-function setCSPHeader() {
-    const cspDirectives = {
-      'default-src': ["'self'"],
-      'script-src': ["'self'"],
-      'style-src': ["'self'",'fonts.googleapis.com'],
-      'img-src': ["'self'"],
-      'object-src': ["'none'"],
-      'frame-src': ["'self'"],
-    };
-  
-    const directives = Object.keys(cspDirectives)
-      .map(directive => `${directive} ${cspDirectives[directive].join(' ')}`)
-      .join('; ');
-  
-    document
-      .querySelector('meta[http-equiv="Content-Security-Policy"]')
-      .setAttribute('content', directives);
-  }
-  
-  setCSPHeader();
