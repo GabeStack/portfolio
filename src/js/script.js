@@ -15,8 +15,7 @@ const navBar = () => {
       document.querySelector(".icon").src = "src/img/bx-menu.svg";
     });
   }
-}
-
+};
 const animate = () => {
   const animaElements = document.querySelectorAll(".js-scroll");
   const windowMetade = window.innerHeight * 0.7;
@@ -29,8 +28,25 @@ const animate = () => {
       anima.classList.remove("ativo");
     }
   });
-}
+};
+// const ModalDownload = () => {
+//   const btnCvDonwload = document.querySelector(".introducao-cv");
+//   if (btnCvDonwload.classList.contains("modal-cv")) {
+//     btnCvDonwload.classList.remove("modal-cv");
+//   } else if (!btnCvDonwload.classList.contains("modal-cv")) {
+//     btnCvDonwload.classList.add("modal-cv");
 
+//   }
+// };
+// const TemplateCvs = () => {
+// const modalCv = document.querySelector(".modal-cv");
+// if(modalCv){
+
+// modalCv.innerHTML = `
+// <h1>header</h1>
+// `
+// }
+// }
 animate();
-
 window.addEventListener("scroll", animate);
+// addEventListener("click", ModalDownload);
