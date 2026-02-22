@@ -1,0 +1,35 @@
+---
+import FadeIn from "../utils/FadeIn";// ajuste o caminho real
+import FormContact from "./FormContact";
+import ToasterClient from "./ToasterClient";
+---
+
+<div class="container mx-auto h-full  px-10 ">
+  <FadeIn client:visible>
+    <h2 class="text-center lg:text-start mt-5 mb-20 text-5xl font-bold">
+      Contato
+    </h2>
+
+    <div class="flex flex-col-reverse lg:flex-row items-center lg:items-start lg:justify-between gap-8">
+      <!-- Lado esquerdo - Formulário -->
+      <div class="w-full lg:pt-1 lg:max-w-xl">
+        <FormContact client:load />
+      </div>
+
+      <!-- Lado direito - Texto -->
+      <div class="flex flex-col justify-center text-center lg:text-start flex-1 text-muted-foreground max-w-lg">
+        <h3 class="text-4xl font-extrabold mb-2 text-balance">
+          Dúvidas ou ideias?
+        </h3>
+        <p class="text-lg leading-relaxed whitespace-normal text-white/60">
+          Estou aqui para ouvir, esclarecer e ajudar você a transformar seus
+          projetos em realidade.
+        </p>
+      </div>
+    </div>
+  </FadeIn>
+
+  <!-- Toaster (client) -->
+  <ToasterClient client:load />
+</div>
+

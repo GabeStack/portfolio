@@ -1,0 +1,45 @@
+---
+import { Github } from '@lucide/astro';
+import { Linkedin }  from '@lucide/astro';
+interface Props {
+  containerStyles?: string;
+  iconStyles: string;
+}
+
+const { containerStyles, iconStyles } = Astro.props;
+
+const socials = [
+  {
+    path: "https://github.com/GabeStack",
+    ariaLabel: "Meu perfil do Github.",
+    icon: "github",
+  },
+  {
+    path: "https://linkedin.com/in/gabestack",
+    ariaLabel: "Meu perfil do Linkedin.",
+    icon: "linkedin",
+  },
+];
+---
+
+<div class={containerStyles}>
+  {socials.map((item) => (
+    <a
+      href={item.path}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={item.ariaLabel}
+      class={iconStyles}
+    >
+      {item.icon === "github" && (
+        <!-- GitHub SVG -->
+          <Github class="text-accent hover:text-black" />
+      )}
+
+      {item.icon === "linkedin" && (
+        <!-- LinkedIn SVG -->
+          <Linkedin class="text-accent hover:text-black" />
+      )}
+    </a>
+  ))}
+</div>

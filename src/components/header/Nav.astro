@@ -1,0 +1,44 @@
+---
+type NavLink = {
+  name: "Home" | "Blog";
+  path: string;
+};
+
+const { pathname } = Astro.url;
+
+const links: NavLink[] = [
+  { name: "Home", path: "/" },
+  { name: "Blog", path: "/blog" },
+];
+
+function isActive(link: NavLink): boolean {
+  if (link.name === "Home") {
+    return pathname === "/";
+  }
+
+  if (link.name === "Blog") {
+    return pathname === "/blog" || pathname.startsWith("/blog/");
+  }
+
+  return false;
+}
+---
+
+<nav class="flex w-[100px] invisible">
+  <ul class="flex font-medium flex-row gap-2.5">
+    {links.map((link) => (
+      <li>
+        <a
+          href={link.path}
+          class={`text-xl capitalize font-medium hover:text-accent ${
+            isActive(link)
+              ? "text-accent border-b-2 border-accent"
+              : ""
+          }`}
+        >
+          {link.name}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>

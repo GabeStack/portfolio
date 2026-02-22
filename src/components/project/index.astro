@@ -1,0 +1,94 @@
+---
+import type { PortfolioProjectCategory } from "@/types/project";
+import type { ImageMetadata } from "astro";
+import Card from "./Card";
+import FadeIn from "../utils/FadeIn";
+import { getImage } from "astro:assets";
+
+import { projectsData } from "@/assets/project/projects";
+const raw = projectsData;
+
+// regra de tamanhos pros banners (ajuste pro seu layout real)
+const bannerSizes = "(min-width: 1280px) 720px, (min-width: 768px) 600px, 92vw";
+const bannerWidths = [480, 640, 800, 1024];
+
+async function toOptimizedBanner(img: string | ImageMetadata | undefined) {
+  if (!img) return [];
+
+  // Se for imagem externa/string: não dá pra usar getImage (a não ser que você use serviço remoto).
+  // Então vai "sem srcset", só url.
+  if (typeof img === "string") {
+    return [{ url: img }];
+  }
+
+  // img é ImageMetadata (local)
+  // fallback url garantida:
+  const fallbackUrl = (await import(`${img.src}?url`)).default as string;
+
+  const avif = await getImage({ src: img, widths: bannerWidths, format: "avif" });
+  const webp = await getImage({ src: img, widths: bannerWidths, format: "webp" });
+
+  return [
+    {
+      url: fallbackUrl,
+      sizes: bannerSizes,
+      sources: [
+        { type: "image/avif", srcSet: avif.srcSet.attribute },
+        { type: "image/webp", srcSet: webp.srcSet.attribute },
+      ],
+    },
+  ];
+}
+
+const categories: PortfolioProjectCategory[] = [];
+
+for (const [key, projects] of Object.entries(raw)) {
+  const nome =
+    key === "backend" ? "Backend" :
+    key === "frontend" ? "Frontend" :
+    key === "fullstack" ? "Fullstack" :
+    key;
+
+  const projetos = [];
+
+  for (let idx = 0; idx < (projects ?? []).length; idx++) {
+    const p = projects?.[idx];
+    const img = p?.image?.url as string | ImageMetadata | undefined;
+
+    const banner = await toOptimizedBanner(img);
+
+    projetos.push({
+      id: `${key}-${idx}`,
+      titulo: p.name,
+      descricao: p.description,
+      tecnologias: p.technologies ?? [],
+      banner,
+      link_github: p.repository?.url || undefined,
+      link_site: p.demo?.url || undefined,
+    });
+  }
+
+  categories.push({ nome, projetos });
+}
+---
+
+<section class="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0">
+  <FadeIn client:visible>
+    <div class="container mt-5 flex flex-col gap-8 lg:gap-14 mx-auto h-full">
+      <h2 class="text-center text-5xl font-bold mb-20">Projetos</h2>
+
+      {
+        categories.map((categoria, index) =>
+          categoria.projetos?.length ? (
+            <Card
+              client:load
+              projects={categoria.projetos}
+              title={categoria.nome}
+              style={index % 2 === 1 ? "xl:flex-row-reverse" : "xl:flex-row"}
+            />
+          ) : null
+        )
+      }
+    </div>
+  </FadeIn>
+</section>

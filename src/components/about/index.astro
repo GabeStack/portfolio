@@ -1,0 +1,49 @@
+---
+import avatar from "@/assets/img/avatar.png";
+import FadeIn from "../utils/FadeIn";
+---
+
+<section
+  id="About"
+  class="container mt-10 lg:mt-12.5 2xl:mt-25 h-full mx-auto lg:mb-12.5 "
+>
+  <FadeIn client:visible>
+    <div
+      class="container flex flex-col items-center justify-center lg:flex-row lg:items-start lg:gap-24"
+    >
+      <!-- Imagem -->
+      <div class="bg-[#232323] mb-2.5 rounded-xl xl:ml-25">
+        <div class="w-75 lg:w-100 xl:h-100">
+          <img
+            src={avatar.src}
+            alt="Avatar do sobre mim"
+            class="object-contain w-full h-full"
+            loading="eager"
+          />
+        </div>
+      </div>
+
+      <!-- Texto -->
+      <div
+        class="flex flex-col px-7 items-center md:px-25 lg:pl-0 lg:pr-12.5 lg:items-start"
+      >
+        <h2 class="text-5xl font-bold">Sobre Mim</h2>
+
+        <p
+          class="flex flex-col items-center text-center gap-6 lg:pr-5 pt-3 lg:text-start text-white/80"
+        >
+          <span class="text-balance">
+            Sou engenheiro de software com mais de 3 anos de experiência no
+            desenvolvimento de aplicações web escaláveis e interativas, focado
+            em projetos pessoais. Durante minha trajetória, desenvolvi soluções
+            que otimizam a performance e elevam a experiência do usuário, sempre
+            com atenção aos detalhes e à eficiência. Sou apaixonado por aprender
+            novas tecnologias e aplicá-las em soluções práticas. Busco novos
+            desafios e oportunidades para colaborar em equipes e contribuir com
+            projetos que gerem impacto real.
+          </span>
+        </p>
+      </div>
+    </div>
+  </FadeIn>
+</section>

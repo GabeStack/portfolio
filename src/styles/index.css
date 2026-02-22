@@ -1,0 +1,144 @@
+/* =================================
+   Tailwind core (v4)
+================================= */
+@import "tailwindcss";
+
+/* Animações extras (substitui tailwindcss-animate) */
+@import "tw-animate-css";
+
+/* =================================
+   TOKENS DE DESIGN
+================================= */
+:root {
+  --primary: #1c1c22;
+
+  --accent: #00ff99;
+  --accent-hover: #00e187;
+}
+
+/* Dark mode por classe */
+.dark {
+  --primary: #1c1c22;
+}
+
+/* =================================
+   TEMA TAILWIND v4 (CSS-first)
+================================= */
+@theme {
+  /* Cores */
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+
+  /* Container */
+
+  /* Animações */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
+
+/* =================================
+   KEYFRAMES
+================================= */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+/* =================================
+   BASE
+================================= */
+@layer base {
+  body {
+    @apply bg-primary text-white leading-loose;
+  }
+
+  .h1 {
+    @apply text-[46px] xl:text-[60px] 2xl:text-[80px] leading-[1.1] font-semibold;
+  }
+}
+
+/* =================================
+   COMPONENTS
+================================= */
+@layer components {
+  /* Swiper (IMPORTANTE: sem @apply + !important) */
+  .swiper-pagination-bullet {
+    background-color: var(--accent);
+    opacity: 0.95;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: var(--accent);
+  }
+}
+
+/* =================================
+   SCROLLBAR
+================================= */
+.scroll-container {
+  overflow-y: auto;
+}
+
+.scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: #2d2d2d;
+  border-radius: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #4f4f4f;
+  border-radius: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #7a7a7a;
+}
+
+/* =================================
+   BLOG / CMS
+================================= */
+.post-content h2 {
+  @apply text-3xl font-bold mt-10 mb-4;
+}
+
+.post-content h3 {
+  @apply text-2xl font-semibold mt-8 mb-3;
+}
+
+.post-content p {
+  @apply leading-relaxed;
+}
+
+.post-content .code-block {
+  @apply relative my-6;
+}
+
+.post-content .copy-btn {
+  @apply absolute top-2 right-2 text-xs bg-zinc-800 text-white px-2 py-1 rounded transition;
+  opacity: 0;
+}
+
+.post-content .code-block:hover .copy-btn {
+  opacity: 1;
+}
+
+.post-content pre {
+  @apply rounded-lg p-4 overflow-x-auto;
+}

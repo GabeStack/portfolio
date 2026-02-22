@@ -1,23 +1,37 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import Header from "@/components/header/index.astro";
+import Footer from "@/components/footer/index.astro";
+---
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" href="/favicon.ico" />
+
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Portfólio de Gabriel Figueiredo, Engenheiro de Software com foco em soluções robustas e domínio em linguagens e tecnologias modernas.Portfólio de Gabriel Figueiredo, Engenheiro de Software com foco em soluções robustas e domínio em linguagens e tecnologias modernas."
+    />
+    <meta property="og:title" content="Gabestack | Portfólio de Gabriel Figueiredo">
+    <meta property="og:description" content="Conheça os projetos e habilidades de Gabriel Figueiredo, especialista em software moderno e escalável.">
+    <meta property="og:site_name" content="Gabestack">
+    <meta property="og:locale" content="pt_BR">
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <title>
+      Gabestack | Portfólio de Gabriel Figueiredo - Engenheiro de Software
+    </title>
+  </head>
+
+  <body class="bg-primary
+      text-white
+      leading-loose">
+    <Header />
+  </body><main>
+    <slot />
+  </main>
+  <Footer />
+</html>

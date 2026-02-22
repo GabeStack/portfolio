@@ -1,0 +1,56 @@
+---
+import Social from "./Social.astro";
+import Photo from "./Photo"; // React
+import FadeIn from "../utils/FadeIn";
+import DownloadButton from "../downloadButton";
+
+import avatar from "../../assets/img/avatar.webp";
+import { buildOptimizedImage } from "@/lib/astro-optimize";
+
+const image = await buildOptimizedImage(avatar, {
+  alt: "Imagem de Gabriel Figueiredo",
+  widths: [260, 340, 500],
+  sizes: "(min-width: 1536px) 500px, (min-width: 1024px) 340px, 260px",
+  // no seu Astro atual, srcSet tem .attribute
+  useAttributeSrcSet: true,
+});
+---
+
+<main id="introduction" class="h-full pt-5 2xl:pt-25">
+  <div class="container mt-5 mx-auto h-full px-10">
+    <FadeIn client:visible delay={0.3} duration={0.6}>
+      <div
+        class="flex flex-col lg:flex-row items-center justify-between xl:pt-8 xl:pb-24"
+      >
+        <div class="text-center lg:text-left order-2 lg:order-0">
+          <span class="text-xl 2xl:text-2xl">Engenheiro de Software</span>
+          <h1 class="h1 mb-6">
+            Olá, eu sou <br />
+            <span class="text-accent">Gabriel Figueiredo</span>
+          </h1>
+          <p
+            class="max-w-125 lg:text-left text-center mb-9 2xl:max-w-150 text-white/80 lg:text-lg"
+          >
+            Especialista em desenvolver soluções de software robustas e
+            escaláveis, com domínio em diversas linguagens de programação e
+            tecnologias.
+          </p>
+          <div class="flex flex-col lg:flex-row items-center gap-8">
+            <DownloadButton client:visible />
+
+            <div class="mb-8 lg:mb-0">
+              <Social
+                containerStyles="flex gap-6"
+                iconStyles="w-9 h-9 border border-accent rounded-full flex justify-center items-center text-accent text-base hover:bg-accent hover:text-primary transition-all duration-500"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="order-1 lg:order-0 mb-8 2xl:mb-0">
+        <Photo client:load alt={image.alt} src={image.src} sizes={image.sizes} sources={image.sources} />
+        </div>
+      </div>
+    </FadeIn>
+  </div>
+</main>

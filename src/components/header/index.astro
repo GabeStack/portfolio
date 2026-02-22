@@ -1,0 +1,16 @@
+---
+import Nav from "./Nav.astro";
+import logo from "@/assets/img/GabeStack.svg";
+---
+
+<header class="flex flex-row w-full justify-around items-center pt-7">
+  <div class="flex flex-row w-full justify-around items-center">
+    <img
+      src={logo.src}
+      alt="Logo GabeStack"
+      class="w-[150px]"
+      loading="eager"
+    />
+    <Nav />
+  </div>
+</header>

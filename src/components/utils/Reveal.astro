@@ -1,0 +1,53 @@
+---
+interface Props {
+  width?: "fit-content" | "100%";
+}
+
+const { width = "fit-content" } = Astro.props;
+---
+
+<div
+  class="reveal-wrapper"
+  style={`position: relative; width: ${width}; overflow: hidden;`}
+>
+  <div class="reveal-content opacity-0 translate-y-[75px]">
+    <slot />
+  </div>
+
+  <div class="reveal-overlay"></div>
+</div>
+
+<script type="module">
+  import { animate, inView } from "motion";
+
+  const wrapper = document.currentScript.previousElementSibling;
+
+  const content = wrapper.querySelector(".reveal-content");
+  const overlay = wrapper.querySelector(".reveal-overlay");
+
+  inView(wrapper, () => {
+    animate(
+      content,
+      { opacity: [0, 1], transform: ["translateY(75px)", "translateY(0px)"] },
+      { duration: 0.3, delay: 0.15, easing: "ease-out" }
+    );
+
+    animate(
+      overlay,
+      { left: ["0%", "100%"] },
+      { duration: 0.4, easing: "ease-in" }
+    );
+  }, { once: true });
+</script>
+
+<style>
+  .reveal-overlay {
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: 0;
+    right: 0;
+    background: #00e187;
+    z-index: 20;
+  }
+</style>
