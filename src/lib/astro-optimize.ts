@@ -7,9 +7,6 @@ type Options = {
   widths: number[];
   sizes: string;
   formats?: ("avif" | "webp")[];
-  // se sua versão do Astro tem srcSet como string, use false
-  // se tem { attribute }, use true (no seu caso: true)
-  useAttributeSrcSet?: boolean;
 };
 
 export async function buildOptimizedImage(
@@ -17,23 +14,17 @@ export async function buildOptimizedImage(
   opts: Options
 ): Promise<OptimizedImage> {
   const formats = opts.formats ?? ["avif", "webp"];
-  const useAttribute = opts.useAttributeSrcSet ?? true;
 
-  // fallback URL 100% válida pra passar pro React
-  const fallbackUrl = (await import(`${img.src}?url`)).default as string;
+  // ✅ fallback simples e correto (URL pública gerada pelo Astro)
+  const fallbackUrl = img.src;
 
   const sources = [];
 
   for (const format of formats) {
     const out = await getImage({ src: img, widths: opts.widths, format });
 
-    const srcSet =
-      typeof out.srcSet === "string"
-        ? out.srcSet
-        : useAttribute
-        ? out.srcSet.attribute
-        : // fallback caso mude
-          (out as any).srcSet?.attribute;
+    // na sua versão: srcSet.attribute é string
+    const srcSet = typeof out.srcSet === "string" ? out.srcSet : out.srcSet.attribute;
 
     sources.push({
       type: format === "avif" ? "image/avif" : format === "webp" ? "image/webp" : undefined,
