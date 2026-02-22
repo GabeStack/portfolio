@@ -15,27 +15,30 @@ const bannerWidths = [480, 640, 800, 1024];
 async function toOptimizedBanner(img: string | ImageMetadata | undefined) {
   if (!img) return [];
 
-  // Se for imagem externa/string: não dá pra usar getImage (a não ser que você use serviço remoto).
-  // Então vai "sem srcset", só url.
+  // string => externo ou já é url final
   if (typeof img === "string") {
     return [{ url: img }];
   }
 
-  // img é ImageMetadata (local)
-  // fallback url garantida:
-  const fallbackUrl = (await import(`${img.src}?url`)).default as string;
+  // ✅ fallback correto (NÃO usar import() aqui)
+  const fallbackUrl = img.src;
 
   const avif = await getImage({ src: img, widths: bannerWidths, format: "avif" });
   const webp = await getImage({ src: img, widths: bannerWidths, format: "webp" });
+
+  const avifSet = typeof avif.srcSet === "string" ? avif.srcSet : avif.srcSet.attribute;
+  const webpSet = typeof webp.srcSet === "string" ? webp.srcSet : webp.srcSet.attribute;
 
   return [
     {
       url: fallbackUrl,
       sizes: bannerSizes,
       sources: [
-        { type: "image/avif", srcSet: avif.srcSet.attribute },
-        { type: "image/webp", srcSet: webp.srcSet.attribute },
+        { type: "image/avif", srcSet: avifSet },
+        { type: "image/webp", srcSet: webpSet },
       ],
+      width: img.width,
+      height: img.height,
     },
   ];
 }
