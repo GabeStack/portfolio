@@ -1,7 +1,7 @@
 // src/components/DownloadButton.tsx
 import { Button } from "@/components/ui/button";
 
-export default function DownloadButton() {
+export default function DownloadButton(href?: string) {
   return (
     <Button
       variant="outline"
@@ -9,7 +9,7 @@ export default function DownloadButton() {
       className="uppercase flex items-center gap-2"
       asChild
     >
-      <a href="/doc/CV.GabrielFigueiredo.pdf" download>
+      <a href={href || "/CV.GabrielFigueiredo.pdf"} download>
         <span>Download CV</span>
 
         {/* SVG inline – perfeito para performance */}
