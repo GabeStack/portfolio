@@ -9,7 +9,7 @@ export default function DownloadButton(href?: string) {
       className="uppercase flex items-center gap-2"
       asChild
     >
-      <a href={href || "/CV.GabrielFigueiredo.pdf"} download>
+      <a href="/CV.GabrielFigueiredo.pdf" download="Gabriel_Figueiredo_CV.pdf">
         <span>Download CV</span>
 
         {/* SVG inline – perfeito para performance */}
